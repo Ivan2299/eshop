@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import SearchInput from './SearchInput/page';
 
 function Nav() {
 	return (
@@ -9,28 +10,7 @@ function Nav() {
 					<Image src='/icons/eshop.svg' width={167} height={38} alt='eshop' />
 				</div>
 			</Link>
-			<div className='flex items-center relative w-full lg:w-[372px]'>
-				<Image
-					className='rounded-full absolute left-3 top-50% color-[#CCCCCC]'
-					src='/icons/searchIcon.svg'
-					width={16}
-					height={16}
-					alt='searchIcon'
-				/>
-				<input
-					className='appearance-none bg-[#fff] border-none w-full text-gray-700  py-3 px-10 focus:outline-none h-10 rounded-lg'
-					type='text'
-					onClick={() => {}}
-					placeholder='Search'
-					aria-label='Search'
-				/>
-				<button
-					className='transition ease-in-out bg-orange-500 absolute right-0 top-0 hover:bg-[red] text-sm text-white py-1 px-2 rounded h-10 w-[78px]'
-					type='button'
-				>
-					Шукати
-				</button>
-			</div>
+			<SearchInput />
 			<div className='flex items-center justify-start font-normal text-[16px] text-white lg:gap-[34px] gap-[10px] lg:mr-[20px] mr-[48px]'>
 				<Link
 					href={'/catalog'}
