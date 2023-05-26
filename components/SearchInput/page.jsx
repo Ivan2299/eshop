@@ -1,39 +1,44 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
+import { MdClear } from 'react-icons/md';
+
+import { useAppStore } from '../../app/Context/store';
+
+import styles from './SearchInput.module.css';
+
 const SearchInput = () => {
-	const [searchQuery, setSearchQuery] = useState('');
+	const { searchValue, setSearchValue } = useAppStore();
 
 	const handleInputChange = e => {
-		setSearchQuery(e.target.value);
+		setSearchValue(e.target.value);
 	};
 
-	const handleSearch = () => {
-		// perform search operation here
+	const handleSearch = searchValue => {
+		setSearchValue('');
 	};
 
 	return (
-		<div className='flex items-center relative w-full lg:w-[372px]'>
+		<div className={styles.searchInput}>
 			<Image
-				className='rounded-full absolute left-3 top-50% color-[#CCCCCC]'
+				className={styles.searchIcon}
 				src='/icons/searchIcon.svg'
 				width={16}
 				height={16}
 				alt='searchIcon'
 			/>
 			<input
-				className='appearance-none bg-[#fff] border-none w-full text-gray-700 py-3 px-10 focus:outline-none h-10 rounded-lg'
+				className={styles.searchBox}
 				type='text'
-				value={searchQuery}
+				value={searchValue}
 				onChange={handleInputChange}
 				placeholder='Пошук'
 				aria-label='Search'
 			/>
-			<button
-				className='transition ease-in-out bg-orange-500 absolute right-0 top-0 hover:bg-[red] text-sm text-white py-1 px-2 rounded h-10 w-[78px]'
-				onClick={handleSearch}
-				type='button'
-			>
+
+			{searchValue ? <MdClear onClick={handleSearch} className={styles.clearButton} /> : ''}
+
+			<button className={styles.searchButton} onClick={handleSearch} type='button'>
 				Шукати
 			</button>
 		</div>

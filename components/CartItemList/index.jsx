@@ -1,16 +1,20 @@
 'use client';
-import axios from 'axios';
 import Link from 'next/link';
 import CartItem from '../CartItem';
 import { useState, useEffect } from 'react';
-import { fetchProducts } from '@/app/utils/fetchProducts';
+import { fetchProducts } from '@/app/api/fetchProducts';
 import styles from './CartItemList.module.css';
+import { useAppStore } from '../../app/Context/store';
 
 const CartItemList = () => {
 	const [products, setProducts] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [filteredProducts, setFilteredProducts] = useState([]);
+
+	const { searchValue, setSearchValue } = useAppStore();
 
 	useEffect(() => {
+		setIsLoading(true);
 		const fetchProductsData = async () => {
 			const fetchedProducts = await fetchProducts();
 			setProducts(fetchedProducts);
@@ -19,16 +23,26 @@ const CartItemList = () => {
 		fetchProductsData();
 	}, []);
 
+	useEffect(() => {
+		const filteredBySearch = searchValue
+			? products.filter(product => product.title.toLowerCase().includes(searchValue.toLowerCase()))
+			: products;
+
+		setFilteredProducts(filteredBySearch);
+	}, [searchValue, products]);
+
 	return (
 		<div className={styles.productWrapper}>
 			{isLoading ? (
 				<p className='text-center text-2xl font-bold color-dark mb-2'>Йде загрузка товарів...</p>
-			) : (
-				products?.map(product => (
+			) : filteredProducts.length ? (
+				filteredProducts.map(product => (
 					<Link className={styles.productLink} key={product.id} href={`/cartItemPage`}>
 						<CartItem data={product} />
 					</Link>
 				))
+			) : (
+				<p className='text-center font-bold color-dark mb-2'>Такого товару немає</p>
 			)}
 		</div>
 	);
