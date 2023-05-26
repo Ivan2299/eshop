@@ -37,9 +37,9 @@ const CartItemList = () => {
 				<p className='text-center text-2xl font-bold color-dark mb-2'>Йде загрузка товарів...</p>
 			) : filteredProducts.length ? (
 				filteredProducts.map(product => (
-					<Link className={styles.productLink} key={product.id} href={`/cartItemPage`}>
+					<div className={styles.productLink} key={product.id}>
 						<CartItem data={product} />
-					</Link>
+					</div>
 				))
 			) : (
 				<p className='text-center font-bold color-dark mb-2'>Такого товару немає</p>

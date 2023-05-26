@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useContext, Dispatch, SetStateAction, useState } from 'react';
+import { createContext, useContext, Dispatch, SetStateAction, useState, useEffect } from 'react';
 // Creating the user context
 const Context = createContext();
 
@@ -7,6 +7,17 @@ const Context = createContext();
 export default function AppStore({ children }) {
 	const [searchValue, setSearchValue] = useState('');
 	const [cartItems, setCartItems] = useState([]);
+
+	useEffect(() => {
+		const storedCartItems = localStorage.getItem('cartItems');
+		if (storedCartItems) {
+			setCartItems(JSON.parse(storedCartItems));
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('cartItems', JSON.stringify(cartItems));
+	}, [cartItems]);
 
 	function addToCart(item) {
 		setCartItems([...cartItems, item]);
@@ -18,6 +29,8 @@ export default function AppStore({ children }) {
 			const newCartItems = [...cartItems];
 			newCartItems.splice(index, 1);
 			setCartItems(newCartItems);
+			console.log(cartItems);
+			console.log(item);
 		}
 	}
 

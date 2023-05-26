@@ -1,10 +1,13 @@
+'use client';
+import { useAppStore } from '../app/Context/store';
 import Image from 'next/image';
 import Link from 'next/link';
 import SearchInput from './SearchInput/page';
 
 function Nav() {
+	const { cartItems } = useAppStore();
 	return (
-		<nav className='flex items-center justify-between gap-3 flex-wrap bg-[#000000]  p-6 sm:height-40 height-60  container mx-auto'>
+		<nav className='flex items-center justify-between gap-3 flex-wrap bg-[#000000]  bg-opacity-75  p-4 sm:height-40 height-60  container mx-auto'>
 			<Link href={'/'}>
 				<div className='flex items-center flex-shrink-1 mr-6 cursor-pointer'>
 					<Image src='/icons/eshop.svg' width={167} height={38} alt='eshop' />
@@ -34,7 +37,7 @@ function Nav() {
 					<button type='button' className='relative'>
 						<Image src='/icons/cartIcon.svg' width={44} height={36} alt='cartIcon' />
 						<span className='absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full'>
-							1
+							{cartItems.length}
 						</span>
 					</button>
 				</Link>
