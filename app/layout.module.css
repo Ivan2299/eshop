@@ -5,3 +5,8 @@
 	flex: 1;
 	align-self: 'flex-start';
 }
+@media (max-width: 768px) {
+	.container {
+		margin: 290px auto 0 auto;
+	}
+}

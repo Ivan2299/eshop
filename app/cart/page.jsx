@@ -16,7 +16,7 @@ const CartPage = () => {
 			: cartItems;
 
 		const price = filteredBySearch.reduce((total, item) => total + item.price, 0);
-		setTotalPrice(price);
+		setTotalPrice(price.toFixed(2));
 
 		setFilteredProducts(filteredBySearch);
 	}, [searchValue, cartItems]);
