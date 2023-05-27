@@ -1,0 +1,13 @@
+.delivery_title {
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 37/ 32px * 100%;
+	margin-bottom: 30px;
+}
+.delivery_section {
+	margin-bottom: 30px;
+}
+
+.delivery_span {
+	font-weight: bold;
+}

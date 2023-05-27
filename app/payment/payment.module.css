@@ -1,0 +1,13 @@
+.payment_title {
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 37/ 32px * 100%;
+	margin-bottom: 30px;
+}
+.payments_section {
+	margin-bottom: 30px;
+}
+
+.payment_span {
+	font-weight: bold;
+}
