@@ -35,7 +35,9 @@ export default function AppStore({ children }) {
 	}
 
 	return (
-		<Context.Provider value={{ searchValue, setSearchValue, cartItems, addToCart, removeFromCart }}>
+		<Context.Provider
+			value={{ searchValue, setSearchValue, cartItems, addToCart, removeFromCart, setCartItems }}
+		>
 			{children}
 		</Context.Provider>
 	);

@@ -1,7 +1,7 @@
 .container {
 	max-width: 1200px;
 	margin: 120px auto 0 auto;
-	padding: 0 20px;
+	/* padding: 0 20px; */
 	flex: 1;
 	align-self: 'flex-start';
 }

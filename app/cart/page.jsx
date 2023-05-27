@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const CartPage = () => {
-	const { cartItems, searchValue, removeFromCart } = useAppStore();
+	const { cartItems, searchValue, removeFromCart, setCartItems } = useAppStore();
 	const [filteredProducts, setFilteredProducts] = useState([]);
 	const [totalPrice, setTotalPrice] = useState(0);
 
@@ -20,6 +20,10 @@ const CartPage = () => {
 
 		setFilteredProducts(filteredBySearch);
 	}, [searchValue, cartItems]);
+
+	const clearCart = () => {
+		setCartItems([]);
+	};
 	return (
 		<div className={s.cart_section}>
 			<h1 className={s.cart_title}>Кошик замовлень</h1>
@@ -46,17 +50,20 @@ const CartPage = () => {
 									removeFromCart(item);
 								}}
 							>
-								-
+								Видалити
 							</button>
 						</div>
 					))}
-					<div className='flex items-center gap-4'>
+					<div className='flex-col lg: flex items-center gap-4'>
 						<button>
 							<Link className={s.cart_product_order} href={'/'}>
 								Оформити замовлення
 							</Link>
 						</button>
 						<p className={s.cart_total_price}>Загальна сума: {totalPrice} $</p>
+						<button onClick={() => clearCart()} className={s.cart_clear}>
+							Очистити Кошик
+						</button>
 					</div>
 				</div>
 			)}

@@ -6,6 +6,11 @@
 	box-sizing: border-box;
 	margin: 50px 0;
 }
+@media screen and (max-width: 768px) {
+	.productWrapper {
+		grid-template-columns: auto;
+	}
+}
 
 .productLink {
 	margin: 0 10px 30px;
