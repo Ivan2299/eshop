@@ -1,6 +1,12 @@
 import React from 'react';
 import s from './payment.module.css';
 
+import { Metadata } from 'next';
+export const metadata = {
+	title: 'Payment',
+	description: 'payment page',
+};
+
 const Payment = () => {
 	return (
 		<div>

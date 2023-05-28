@@ -1,6 +1,12 @@
 import React from 'react';
 import s from './delivery.module.css';
 
+import { Metadata } from 'next';
+export const metadata = {
+	title: 'Delivery',
+	description: 'welcome to delivery page',
+};
+
 const Delivery = () => {
 	return (
 		<div>

@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import styles from './CartItem.module.css';
 import { useState, useEffect } from 'react';
 import { useAppStore } from '../../app/Context/store';
@@ -28,20 +29,27 @@ const CartItem = ({ data }) => {
 	};
 
 	return (
-		<div className={styles.productCard}>
-			<img className={styles.productImage} src={data.image} alt={data.title} />
-			<h3 className={styles.productTitle}>{data.title}</h3>
-			<p className={styles.productPrice}>{data.price} $</p>
-			<button
-				onClick={() => {
-					handleAddToCart(data);
-				}}
-				className={addedToCart ? styles.addedButton : styles.addButton}
-			>
-				{addedToCart ? 'У кошику' : 'До кошику'}
-			</button>
-			{/* Add other details */}
-		</div>
+		<>
+			<div className={styles.productCard}>
+				<Link href={`/cartItemPage/${data.id}`}>
+					<div className='flex items-center flex-col'>
+						<img className={styles.productImage} src={data.image} alt={data.title} />
+						<h3 className={styles.productTitle}>{data.title}</h3>
+						<p className={styles.productPrice}>{data.price} $</p>
+
+						{/* Add other details */}
+					</div>
+				</Link>
+				<button
+					onClick={() => {
+						handleAddToCart(data);
+					}}
+					className={addedToCart ? styles.addedButton : styles.addButton}
+				>
+					{addedToCart ? 'У кошику' : 'До кошику'}
+				</button>
+			</div>
+		</>
 	);
 };
 

@@ -59,7 +59,7 @@ const CartPage = () => {
 					<div className={s.cart_products_container}>
 						{filteredProducts?.map(item => (
 							<div key={item.id} className={s.cart_product_container}>
-								<Link className={s.cart_product_link_container} href={`/products/${item.id}`}>
+								<Link className={s.cart_product_link_container} href={`/cartItemPage/${item.id}`}>
 									<img className={s.cart_product_image} src={item.image} alt={item.title} />
 									<h3 className={s.cart_product_title}>{item.title}</h3>
 									<p className={s.cart_product_price}>{item.price} $</p>
@@ -76,7 +76,7 @@ const CartPage = () => {
 						))}
 						<div className='flex-col lg: flex items-center gap-4'>
 							<button>
-								<Link className={s.cart_product_order} href={'/'}>
+								<Link className={s.cart_product_order} href={'/payment'}>
 									Оформити замовлення
 								</Link>
 							</button>
