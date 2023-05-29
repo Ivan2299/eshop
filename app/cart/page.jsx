@@ -16,7 +16,7 @@ const CartPage = () => {
 
 	useEffect(() => {
 		setIsLoading(true);
-		const fetchProductsData = async () => {
+const fetchProductsData = async () => {
 			const fetchedProducts = await fetchProducts();
 			setProducts(fetchedProducts);
 			setIsLoading(false);

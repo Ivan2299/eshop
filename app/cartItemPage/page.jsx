@@ -1,7 +1,8 @@
+'use client';
 import React from 'react';
 
-const cartItemPage = () => {
-	return <div>cartItemPage</div>;
+const CartItemPage = () => {
+	return <div>CartItemPage</div>;
 };
 
-export default cartItemPage;
+export default CartItemPage;
