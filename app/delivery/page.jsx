@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './delivery.module.css';
 
 import { Metadata } from 'next';

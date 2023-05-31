@@ -76,7 +76,7 @@
 	.cart_product_container {
 		padding: 10px;
 		flex-direction: column;
-		justify-content: start;
+		justify-content: flex-start;
 	}
 }
 .cart_product_link_container {

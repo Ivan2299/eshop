@@ -1,7 +1,7 @@
 'use client';
 
 import Nav from '../Nav';
-import s from './header.module.css';
+import s from './Header.module.css';
 
 const Header = () => {
 	return (
